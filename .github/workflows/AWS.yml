@@ -13,38 +13,38 @@ jobs:
         uses: actions/checkout@master
 
       - name: Build client Dev Dockerfile
-        run: docker build -t ${{secrets.DOCKER_USER}}/docker-server-dev -f ./server/Dockerfile.dev .
+        run: docker build -t ${{secrets.DOCKER_USER}}/docker-client-dev -f ./client/Dockerfile.dev .
 
-      # - name: Test client Dev Dockerfile
-      #   run: docker run -e CI=true ${{secrets.DOCKER_USER}}/docker-client-dev npm run test -- --coverage
+      - name: Test client Dev Dockerfile
+        run: docker run -e CI=true ${{secrets.DOCKER_USER}}/docker-client-dev npm run test -- --coverage
 
-      # - name: Build client Prod Dockerfile
-      #   run: docker build -t ${{secrets.DOCKER_USER}}/docker-client-prod -f ./client/Dockerfile .
+      - name: Build client Prod Dockerfile
+        run: docker build -t ${{secrets.DOCKER_USER}}/docker-client-prod -f ./client/Dockerfile .
 
-      # - name: Build worker Prod Dockerfile
-      #   run: docker build -t ${{secrets.DOCKER_USER}}/docker-worker-prod -f ./worker/Dockerfile .
+      - name: Build worker Prod Dockerfile
+        run: docker build -t ${{secrets.DOCKER_USER}}/docker-worker-prod -f ./worker/Dockerfile .
 
-      # - name: Build server Prod Dockerfile
-      #   run: docker build -t ${{secrets.DOCKER_USER}}/docker-server-prod -f ./server/Dockerfile .
+      - name: Build server Prod Dockerfile
+        run: docker build -t ${{secrets.DOCKER_USER}}/docker-server-prod -f ./server/Dockerfile .
 
-      # - name: Build nginx Prod Dockerfile
-      #   run: docker build -t ${{secrets.DOCKER_USER}}/docker-nginx-prod -f ./nginx/Dockerfile .
+      - name: Build nginx Prod Dockerfile
+        run: docker build -t ${{secrets.DOCKER_USER}}/docker-nginx-prod -f ./nginx/Dockerfile .
 
-      # - name: Docker Login
-      #   uses: docker/login-action@v1.10.0
-      #   with:
-      #     username: ${{secrets.DOCKER_USER}}
-      #     password: ${{secrets.ACCESS_TOKEN}}
-      #     logout: false
+      - name: Docker Login
+        uses: docker/login-action@v1.10.0
+        with:
+          username: ${{secrets.DOCKER_USER}}
+          password: ${{secrets.ACCESS_TOKEN}}
+          logout: false
 
-      # - name: Push worker image to DockerHub
-      #   run: docker push ${{secrets.DOCKER_USER}}/docker-worker-prod
+      - name: Push worker image to DockerHub
+        run: docker push ${{secrets.DOCKER_USER}}/docker-worker-prod
 
-      # - name: Push client image to DockerHub
-      #   run: docker push ${{secrets.DOCKER_USER}}/docker-client-prod
+      - name: Push client image to DockerHub
+        run: docker push ${{secrets.DOCKER_USER}}/docker-client-prod
 
-      # - name: Push server image to DockerHub
-      #   run: docker push ${{secrets.DOCKER_USER}}/docker-server-prod
+      - name: Push server image to DockerHub
+        run: docker push ${{secrets.DOCKER_USER}}/docker-server-prod
 
-      # - name: Push nginx image to DockerHub
-      #   run: docker push ${{secrets.DOCKER_USER}}/docker-nginx-prod
+      - name: Push nginx image to DockerHub
+        run: docker push ${{secrets.DOCKER_USER}}/docker-nginx-prod
