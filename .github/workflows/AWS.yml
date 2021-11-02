@@ -12,10 +12,6 @@ jobs:
       - name: Checkout Latest Repo
         uses: actions/checkout@master
 
-      - name: Build client Dev Dockerfile
-        run: npm i
-        run: npm run test
-
       - name: Build client Prod Dockerfile
         run: docker build -t ${{secrets.DOCKER_USER}}/docker-client-prod -f ./client/Dockerfile .
 
