@@ -15,8 +15,8 @@ jobs:
       - name: Build client Dev Dockerfile
         run: docker build -t ${{secrets.DOCKER_USER}}/docker-server-dev -f ./server/Dockerfile.dev .
 
-      - name: Test client Dev Dockerfile
-        run: docker run -e CI=true ${{secrets.DOCKER_USER}}/docker-client-dev npm run test -- --coverage
+      # - name: Test client Dev Dockerfile
+      #   run: docker run -e CI=true ${{secrets.DOCKER_USER}}/docker-client-dev npm run test -- --coverage
 
       # - name: Build client Prod Dockerfile
       #   run: docker build -t ${{secrets.DOCKER_USER}}/docker-client-prod -f ./client/Dockerfile .
