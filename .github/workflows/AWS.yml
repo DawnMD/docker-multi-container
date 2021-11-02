@@ -13,10 +13,8 @@ jobs:
         uses: actions/checkout@master
 
       - name: Build client Dev Dockerfile
-        run: docker build -t ${{secrets.DOCKER_USER}}/docker-client-dev -f ./client/Dockerfile.dev .
-
-      - name: Test client Dev Dockerfile
-        run: docker run -e CI=true ${{secrets.DOCKER_USER}}/docker-client-dev npm run test -- --coverage
+        run: npm i
+        run: npm run test
 
       - name: Build client Prod Dockerfile
         run: docker build -t ${{secrets.DOCKER_USER}}/docker-client-prod -f ./client/Dockerfile .
