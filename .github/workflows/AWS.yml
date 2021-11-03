@@ -42,3 +42,13 @@ jobs:
 
       - name: Push nginx image to DockerHub
         run: docker push ${{secrets.DOCKER_USER}}/docker-nginx-prod
+
+      - name: Beanstalk Deploy
+        uses: einaregilsson/beanstalk-deploy@v18
+        with:
+          aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws_secret_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          region: ap-south-1
+          application_name: docker-multi-react
+          environment_name: Dockermultireact-env
+          version_label: 1.0
